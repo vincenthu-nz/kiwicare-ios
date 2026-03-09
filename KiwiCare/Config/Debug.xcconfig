@@ -1,0 +1,6 @@
+// Debug.xcconfig
+// Local development configuration.
+// ⚠️  This file is gitignored — contains machine-specific local IP.
+//     Copy Debug.xcconfig.example and fill in your own values.
+
+API_BASE_URL = http:\/\/192.168.88.7:9080

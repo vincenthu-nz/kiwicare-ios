@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0FCBAF612F5E6A6C003B10FA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0FCBAF602F5E6A6C003B10FA /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0FCBAF192F5E48D3003B10FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		0FCBAF062F5E48C7003B10FA /* KiwiCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KiwiCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCBAF182F5E48D3003B10FA /* KiwiCareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiCareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCBAF222F5E48D3003B10FA /* KiwiCareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiCareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FCBAF602F5E6A6C003B10FA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +84,7 @@
 				0FCBAF1B2F5E48D3003B10FA /* KiwiCareTests */,
 				0FCBAF252F5E48D3003B10FA /* KiwiCareUITests */,
 				0FCBAF072F5E48C7003B10FA /* Products */,
+				0FCBAF602F5E6A6C003B10FA /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCBAF612F5E6A6C003B10FA /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,8 +416,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smilekiss.kiwicare.KiwiCare;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smile.v.Open-Fire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -441,8 +448,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smilekiss.kiwicare.KiwiCare;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smile.v.Open-Fire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -464,7 +471,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smilekiss.kiwicare.KiwiCareTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smile.v.Open-Fire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -486,7 +493,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smilekiss.kiwicare.KiwiCareTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smile.v.Open-Fire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -506,7 +513,7 @@
 				DEVELOPMENT_TEAM = 43TYM4VG2Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smilekiss.kiwicare.KiwiCareUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smile.v.Open-Fire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -526,7 +533,7 @@
 				DEVELOPMENT_TEAM = 43TYM4VG2Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.smilekiss.kiwicare.KiwiCareUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smile.v.Open-Fire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;

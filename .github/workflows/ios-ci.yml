@@ -1,0 +1,92 @@
+name: iOS CI
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Build & Test
+    runs-on: macos-15
+    # Repo root is the Xcode project folder — no subdirectory needed.
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Cache resolved SPM packages (not DerivedData — too large, slow to compress).
+      # Key invalidates when Package.resolved changes (new/updated dependencies).
+      - name: Cache SPM packages
+        uses: actions/cache@v4
+        with:
+          path: SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Show build environment
+        run: |
+          xcodebuild -version
+          swift --version
+          xcrun simctl list runtimes
+
+      - name: Restore Config secrets
+        env:
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        run: |
+          mkdir -p KiwiCare/Config
+          echo "API_BASE_URL = $API_BASE_URL" > KiwiCare/Config/Secrets.xcconfig
+
+      - name: Install xcpretty
+        run: gem install xcpretty --no-document
+
+      - name: Resolve Swift packages
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project KiwiCare.xcodeproj \
+            -clonedSourcePackagesDirPath SourcePackages
+
+      - name: Run unit tests
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project KiwiCare.xcodeproj \
+            -scheme KiwiCare \
+            -destination "platform=iOS Simulator,name=iPhone 16,OS=latest" \
+            -clonedSourcePackagesDirPath SourcePackages \
+            -only-testing KiwiCareTests \
+            -resultBundlePath TestResults.xcresult \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcpretty --report junit --output test-results.xml
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            TestResults.xcresult
+            test-results.xml
+
+      - name: Build (Release)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project KiwiCare.xcodeproj \
+            -scheme KiwiCare \
+            -destination "platform=iOS Simulator,name=iPhone 16,OS=latest" \
+            -clonedSourcePackagesDirPath SourcePackages \
+            -configuration Release \
+            CONFIGURATION_BUILD_DIR=$PWD/build/Release \
+            CODE_SIGNING_ALLOWED=NO \
+            | xcpretty
+
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: KiwiCare-app
+          path: build/Release/KiwiCare.app
